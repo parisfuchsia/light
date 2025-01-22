@@ -40,11 +40,11 @@ const Home = () => {
         try {
             const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/all/notes`, {
                 params: {
-                    userId: user._id
+                    userId: user?._id
                 }
             });
             
-            setNotes(res.data.notes);
+            setNotes(res?.data?.notes);
         } catch (e) {
             
         }
@@ -59,11 +59,11 @@ const Home = () => {
     }, [user]);
     
     const noteByType = getType => {
-        const note = notes.reduce((acc, prev) => {
+        const note = notes?.reduce((acc, prev) => {
           if(getType === "ALL"){
             acc.push(prev);
        
-          }else if (prev.noteType === getType) {
+          }else if (prev?.noteType === getType) {
                 acc.push(prev);
             }
             return acc;
@@ -76,7 +76,7 @@ const Home = () => {
             let cpySelectedNotes = [...selectedNotes];
 
                 const index = cpySelectedNotes.findIndex(
-                    item => item._id === getNoteObj._id
+                    item => item?._id === getNoteObj._id
                 );
               if(index > -1){ 
                 cpySelectedNotes.splice(index, 1);
@@ -98,7 +98,7 @@ const Home = () => {
 
     const selectAllNotesByType = getType => {
         //getType: either NOTE OR PIN
-        const note = notes.filter(item => item.noteType === getType);
+        const note = notes?.filter(item => item?.noteType === getType);
         setSelectedNotes(prev => {
             return [...prev,  ...note];
         });
@@ -112,7 +112,7 @@ const Home = () => {
 
     const deselectAllNotesByType = getType => {
         //getNoteType: either pIN or NOTE
-        const notGetType = selectedNotes.filter(item => item.noteType !== getType)
+        const notGetType = selectedNotes?.filter(item => item.noteType !== getType)
         
         setSelectedNotes([...notGetType]);
         setSelectedType(prev => {
@@ -150,8 +150,8 @@ const Home = () => {
       const types = ["NOTE", "PIN"]
       if(notes.length > 0){
         types.forEach(type => {
-        const filteredNotesType = notes.filter(item => item.noteType === type); 
-        const filteredSelectedNotes = selectedNotes.filter(item => item.noteType === type);
+        const filteredNotesType = notes?.filter(item => item?.noteType === type); 
+        const filteredSelectedNotes = selectedNotes?.filter(item => item?.noteType === type);
         if(filteredNotesType.length === filteredSelectedNotes.length){
           setSelectedType(prev => {
             return {

@@ -14,7 +14,7 @@ export const fetchUser = createAsyncThunk("fetchUser", async(_, thunkAPI) => {
     } )
     
     
-    return res.data.user;
+    return res?.data?.user;
   }catch(e){
     
     return thunkAPI.rejectWithValue("Rejected");
@@ -36,7 +36,7 @@ const userSlice = createSlice({
       state.error = false;
     }) 
     builder.addCase(fetchUser.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action?.payload;
       state.error = false;
       state.loading = false;
     }) 

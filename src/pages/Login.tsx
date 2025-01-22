@@ -110,8 +110,8 @@ const Login = () => {
     setMessage(prev => {
       return {
         ...prev, 
-        message: response.data.message,
-        error: !response.data.success 
+        message: response?.data.message,
+        error: !response?.data.success 
       }
     })
   }
