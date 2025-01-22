@@ -55,7 +55,7 @@ const Archived = () => {
     setIsGetArchivedNotesPending(true);
     dispatch(fetchUser());
   }, [])
-  console.log(location)
+  
   useEffect(() => {
     document.body.style.overflow = isActionModalOpen ? "hidden" : "";
     return() => {
@@ -72,7 +72,7 @@ const Archived = () => {
     }else{
       cpySelectedNotes.push({ _id: getNoteInfo._id})
     }
-    console.log(cpySelectedNotes)
+    
     if(cpySelectedNotes.length === archivedNotes.length){
       setIsAllSelected(true);
     }else{
@@ -99,7 +99,7 @@ const Archived = () => {
     let cpySelectedNotes = [...selectedNotes];
       archivedNotes.forEach(item => cpySelectedNotes.push({ _id: item._id}))
     setSelectedNotes(cpySelectedNotes)
-    console.log(cpySelectedNotes)
+    
    return setIsAllSelected(true);
   }
   

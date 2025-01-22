@@ -52,7 +52,7 @@ const Login = () => {
       const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/checksession`, {
         withCredentials: true
       });
-      console.log({res})
+      
       if(res?.data?.user){
         setUser(res.data.user)
       }
@@ -93,7 +93,7 @@ const Login = () => {
       withCredentials: true
     });
   
-    console.log({res})
+    
     setMessage(prev => {
       return {
         ...prev, 
