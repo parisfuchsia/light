@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchUser = createAsyncThunk("fetchUser", async(_, thunkAPI) => {
   try {
-    const res = await axios.get("http://localhost:8520/checksession", {
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/checksession`, {
     withCredentials: true
     } )
     
